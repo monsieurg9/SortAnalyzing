@@ -1,6 +1,6 @@
 object Main: TMain
-  Left = 189
-  Top = 137
+  Left = 206
+  Top = 143
   BorderStyle = bsSingle
   Caption = 'Main'
   ClientHeight = 505
@@ -150,7 +150,7 @@ object Main: TMain
     Top = 544
     Width = 1273
     Height = 49
-    Caption = 'btnDrawGraphic'
+    Caption = #1055#1086#1089#1090#1088#1086#1080#1090#1100' '#1075#1088#1072#1092#1080#1082#1080
     TabOrder = 4
     OnClick = btnDrawGraphicClick
   end

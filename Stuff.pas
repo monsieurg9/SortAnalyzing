@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, TeEngine, Series, ExtCtrls, TeeProcs, Chart, TeeFunci, StdCtrls,
-  jpeg, ComCtrls;
+  jpeg, ComCtrls, Grids, Buttons;
 
 const
   NSize = 12;
@@ -14,6 +14,7 @@ const
   FileNames : array [1..3,1..2] of string = (('FBubbleTime.txt','FHeapTime.txt'),
                                              ('FCompBubble.txt','FCompHeap.txt'),
                                              ('FBubbleTransp.txt','FHeapTransp.txt'));
+  GridHead : array [0..3] of string = ('Размерность','Случайный','Отсортированный','Перевернутый');
 type
   ResultMas = array [1..3, 1..NSize] of cardinal;
   TFile = file of cardinal;
@@ -35,6 +36,13 @@ type
     rbTime: TRadioButton;
     rbTransp: TRadioButton;
     btnDrawGraphic: TButton;
+    btnTable: TButton;
+    strngrdHeap: TStringGrid;
+    strngrdBubble: TStringGrid;
+    btnFillTable: TBitBtn;
+    txtHeap: TStaticText;
+    txtBubble: TStaticText;
+    btnExit: TBitBtn;
     procedure rbInvertedClick(Sender: TObject);
     procedure rbRandomClick(Sender: TObject);
     procedure SetScale;
@@ -45,6 +53,9 @@ type
     procedure rbTranspClick(Sender: TObject);
     procedure btnDrawGraphicClick(Sender: TObject);
     procedure rbSortedClick(Sender: TObject);
+    procedure btnTableClick(Sender: TObject);
+    procedure btnFillTableClick(Sender: TObject);
+    procedure btnExitClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -255,4 +266,58 @@ begin
   closefile(FHeap);
 end;
 
+procedure TMain.btnTableClick(Sender: TObject);
+var
+  i : cardinal;
+begin
+  btnDrawGraphic.Visible := False;
+  ChtGraphicBoxBubble.Visible := False;
+  ChtGraphicBoxHeap.Visible := False;
+  grpMassType.Visible := False;
+  strngrdHeap.Visible := True;
+  strngrdBubble.Visible := True;
+  txtBubble.Visible := True;
+  txtHeap.Visible := true;
+  btnFillTable.Visible := true;
+
+  for i := 0 to 3 do
+  begin
+    strngrdHeap.Cells[i,0] := GridHead[i];
+    strngrdBubble.Cells[i,0] := GridHead[i];
+  end;
+
+  for i := 1 to 12 do
+  begin
+    strngrdHeap.Cells[0,i] := IntToStr(Size[i]);
+    strngrdBubble.Cells[0,i] := IntToStr(Size[i]);
+  end;
+end;
+
+procedure TMain.btnFillTableClick(Sender: TObject);
+var
+  i, j: cardinal;
+  buf : cardinal;
+begin
+  assignfile(FBubble, CurrentFile[1]);
+  assignfile(FHeap,   CurrentFile[2]);
+
+  reset(FBubble);
+  reset(FHeap);
+  for i := 1 to 3 do
+  begin
+    for j := 1 to 12 do
+    begin
+      read(FHeap, buf);
+      strngrdHeap.Cells [i,j] := IntToStr(buf);
+      read(FBubble, buf);
+      strngrdBubble.Cells [i,j] := IntToStr(buf);
+    end;
+  end;
+end;
+procedure TMain.btnExitClick(Sender: TObject);
+begin
+  close;
+end;
+
 end.
+
