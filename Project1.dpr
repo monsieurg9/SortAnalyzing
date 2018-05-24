@@ -2,15 +2,18 @@ program Project1;
 
 uses
   Forms,
-  Stuff in 'Stuff.pas' {Main},
-  Unit1 in 'Unit1.pas' {Form1};
+  Stuff in 'Stuff.pas' {FGraphics},
+  Unit1 in 'Unit1.pas' {Main},
+  Unit2 in 'Unit2.pas' {FRegistration};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TMain, Main);
-  Application.CreateForm(TForm1, Form1);
-  Main.SetScale;
+  Application.CreateForm(TFGraphics, FGraphics);
+  Application.CreateForm(TFRegistration, FRegistration);
+  FGraphics.SetScale;
+  FGraphics.Initialize;
   Application.Run;
 end.

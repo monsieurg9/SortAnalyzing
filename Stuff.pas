@@ -21,7 +21,7 @@ type
   TMas  = array [1..MaxMassSize] of cardinal;
   TCriteria = (Random=1, Sorted, Inverted);
 
-  TMain = class(TForm)
+  TFGraphics = class(TForm)
     chtGraphicBoxBubble: TChart;
     lnsrsSeries1: TLineSeries;
     TeeFunction1: TMultiplyTeeFunction;
@@ -42,7 +42,7 @@ type
     btnFillTable: TBitBtn;
     txtHeap: TStaticText;
     txtBubble: TStaticText;
-    btnExit: TBitBtn;
+    btnBack: TBitBtn;
     procedure rbInvertedClick(Sender: TObject);
     procedure rbRandomClick(Sender: TObject);
     procedure SetScale;
@@ -55,7 +55,8 @@ type
     procedure rbSortedClick(Sender: TObject);
     procedure btnTableClick(Sender: TObject);
     procedure btnFillTableClick(Sender: TObject);
-    procedure btnExitClick(Sender: TObject);
+    procedure btnBackClick(Sender: TObject);
+    procedure Initialize;
   private
     { Private declarations }
   public
@@ -64,7 +65,7 @@ type
 
 
 var
-  Main: TMain;
+  FGraphics: TFGraphics;
   FHeapTime,FBubbleTime,FHeapTransp,FBubbleTransp,FCompHeap,FCompBubble : text;
   size : array [1..NSize] of integer = (100, 250, 500, 1000, 2000, 3000, 5000, 10000, 20000, 50000, 60000, 70000);
   FBubble, FHeap : text;
@@ -85,9 +86,11 @@ var
   }
 implementation
 
+uses Unit1;
+
 {$R *.dfm}
 
-procedure TMain.SetScale;
+procedure TFGraphics.SetScale;
 begin
   with chtGraphicBoxBubble do
   begin
@@ -119,22 +122,22 @@ begin
   end;
 end;
 
-procedure TMain.rbSortedClick(Sender: TObject);
+procedure TFGraphics.rbSortedClick(Sender: TObject);
 begin
   Criteria := Sorted;
 end;
 
-procedure TMain.rbInvertedClick(Sender: TObject);
+procedure TFGraphics.rbInvertedClick(Sender: TObject);
 begin
   Criteria := Inverted;
 end;
 
-procedure TMain.rbRandomClick(Sender: TObject);
+procedure TFGraphics.rbRandomClick(Sender: TObject);
 begin
   Criteria := Random;
 end;
 
-function TMain.GetMax(Const FFile: text): cardinal;
+function TFGraphics.GetMax(Const FFile: text): cardinal;
 var
   a : ResultMas;
   i, j : cardinal;
@@ -163,7 +166,7 @@ begin
   end;
 end;
 
-function TMain.GetMaxRow(const FFile: text; Row: TCriteria): cardinal;
+function TFGraphics.GetMaxRow(const FFile: text; Row: TCriteria): cardinal;
 var
   a : ResultMas;
   i, j : cardinal;
@@ -176,6 +179,7 @@ begin
       read(FFile, a[i,j])
     end;
   end;
+  Result := a[1, NSize];
   case Row of
     Random:   Result := a[1, NSize];
     Sorted:   Result := a[2, NSize];
@@ -183,25 +187,25 @@ begin
   end;
 end;
 
-procedure TMain.rbTimeClick(Sender: TObject);
+procedure TFGraphics.rbTimeClick(Sender: TObject);
 begin
   CurrentFile[1] := FileNames[1,1];
   CurrentFile[2] := FileNames[1,2];
 end;
 
-procedure TMain.rbCompClick(Sender: TObject);
+procedure TFGraphics.rbCompClick(Sender: TObject);
 begin
   CurrentFile[1] := FileNames[2,1];
   CurrentFile[2] := FileNames[2,2];
 end;
 
-procedure TMain.rbTranspClick(Sender: TObject);
+procedure TFGraphics.rbTranspClick(Sender: TObject);
 begin
   CurrentFile[1] := FileNames[3,1];
   CurrentFile[2] := FileNames[3,2];
 end;
 
-procedure TMain.btnDrawGraphicClick(Sender: TObject);
+procedure TFGraphics.btnDrawGraphicClick(Sender: TObject);
 var
   i, x, y : cardinal;
 begin
@@ -266,34 +270,7 @@ begin
   closefile(FHeap);
 end;
 
-procedure TMain.btnTableClick(Sender: TObject);
-var
-  i : cardinal;
-begin
-  btnDrawGraphic.Visible := False;
-  ChtGraphicBoxBubble.Visible := False;
-  ChtGraphicBoxHeap.Visible := False;
-  grpMassType.Visible := False;
-  strngrdHeap.Visible := True;
-  strngrdBubble.Visible := True;
-  txtBubble.Visible := True;
-  txtHeap.Visible := true;
-  btnFillTable.Visible := true;
-
-  for i := 0 to 3 do
-  begin
-    strngrdHeap.Cells[i,0] := GridHead[i];
-    strngrdBubble.Cells[i,0] := GridHead[i];
-  end;
-
-  for i := 1 to 12 do
-  begin
-    strngrdHeap.Cells[0,i] := IntToStr(Size[i]);
-    strngrdBubble.Cells[0,i] := IntToStr(Size[i]);
-  end;
-end;
-
-procedure TMain.btnFillTableClick(Sender: TObject);
+procedure TFGraphics.btnFillTableClick(Sender: TObject);
 var
   i, j: cardinal;
   buf : cardinal;
@@ -305,7 +282,7 @@ begin
   reset(FHeap);
   for i := 1 to 3 do
   begin
-    for j := 1 to 12 do
+    for j := 1 to NSize do
     begin
       read(FHeap, buf);
       strngrdHeap.Cells [i,j] := IntToStr(buf);
@@ -314,9 +291,77 @@ begin
     end;
   end;
 end;
-procedure TMain.btnExitClick(Sender: TObject);
+procedure TFGraphics.btnBackClick(Sender: TObject);
 begin
-  close;
+  FGraphics.close;
+end;
+
+procedure TFGraphics.Initialize;
+var
+  i : cardinal;
+begin
+  rbTimeClick(rbTime);
+  rbRandomClick(rbRandom);
+
+  for i := 0 to 3 do
+  begin
+    strngrdHeap.Cells[i,0] := GridHead[i];
+    strngrdBubble.Cells[i,0] := GridHead[i];
+  end;
+
+  for i := 1 to NSize do
+  begin
+    strngrdHeap.Cells[0,i] := IntToStr(Size[i]);
+    strngrdBubble.Cells[0,i] := IntToStr(Size[i]);
+  end;
+end;
+
+procedure TFGraphics.btnTableClick(Sender: TObject);
+begin
+  if btnDrawGraphic.Visible then
+    btnDrawGraphic.Visible := False
+  else
+    btnDrawGraphic.Visible := True;
+
+  if ChtGraphicBoxBubble.Visible then
+    ChtGraphicBoxBubble.Visible := False
+  else
+    ChtGraphicBoxBubble.Visible := True;
+
+  if ChtGraphicBoxHeap.Visible then
+    ChtGraphicBoxHeap.Visible := False
+  else
+    ChtGraphicBoxHeap.Visible := True;
+
+  if grpMassType.Visible then
+    grpMassType.Visible := False
+  else
+    grpMassType.Visible := True;
+
+  if strngrdHeap.Visible then
+    strngrdHeap.Visible := False
+  else
+    strngrdHeap.Visible := True;
+
+  if strngrdBubble.Visible then
+    strngrdBubble.Visible := False
+  else
+    strngrdBubble.Visible := True;
+
+  if txtBubble.Visible then
+    txtBubble.Visible := False
+  else
+    txtBubble.Visible := True;
+
+  if txtHeap.Visible then
+    txtHeap.Visible := False
+  else
+    txtHeap.Visible := True;
+
+  if btnFillTable.Visible then
+    btnFillTable.Visible := False
+  else
+    btnFillTable.Visible := True;
 end;
 
 end.

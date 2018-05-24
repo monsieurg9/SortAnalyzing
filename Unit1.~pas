@@ -11,7 +11,6 @@ type
     btnGraphics: TButton;
     btnRegistration: TButton;
     procedure btnGraphicsClick(Sender: TObject);
-    procedure btnRegistrationClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -23,18 +22,13 @@ var
 
 implementation
 
-uses stuff, Unit2;
+uses stuff;
 
 {$R *.dfm}
 
 procedure TMain.btnGraphicsClick(Sender: TObject);
 begin
   FGraphics.ShowModal;
-end;
-
-procedure TMain.btnRegistrationClick(Sender: TObject);
-begin
-  FRegistration.ShowModal;
 end;
 
 end.

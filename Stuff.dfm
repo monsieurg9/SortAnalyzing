@@ -1,6 +1,6 @@
-object Main: TMain
-  Left = 247
-  Top = 130
+object FGraphics: TFGraphics
+  Left = 316
+  Top = 282
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1043#1088#1072#1092#1080#1082#1080
@@ -63,7 +63,9 @@ object Main: TMain
       Width = 113
       Height = 17
       Caption = #1057#1083#1091#1095#1072#1081#1085#1099#1081
+      Checked = True
       TabOrder = 0
+      TabStop = True
       OnClick = rbRandomClick
     end
     object rbSorted: TRadioButton
@@ -135,7 +137,9 @@ object Main: TMain
       Width = 105
       Height = 17
       Caption = #1042#1088#1077#1084#1103
+      Checked = True
       TabOrder = 1
+      TabStop = True
       OnClick = rbTimeClick
     end
     object rbTransp: TRadioButton
@@ -162,7 +166,7 @@ object Main: TMain
     Top = 616
     Width = 345
     Height = 41
-    Caption = #1058#1072#1073#1083#1080#1094#1099
+    Caption = #1058#1072#1073#1083#1080#1094#1099'/'#1043#1088#1072#1092#1080#1082#1080
     TabOrder = 5
     OnClick = btnTableClick
   end
@@ -228,13 +232,13 @@ object Main: TMain
     TabOrder = 10
     Visible = False
   end
-  object btnExit: TBitBtn
+  object btnBack: TBitBtn
     Left = 1000
     Top = 672
     Width = 313
     Height = 25
-    Caption = #1042#1099#1093#1086#1076
+    Caption = #1053#1072#1079#1072#1076
     TabOrder = 11
-    OnClick = btnExitClick
+    OnClick = btnBackClick
   end
 end
