@@ -1,8 +1,8 @@
-program Project1;
+program SortingAnalysis;
 
 uses
   Forms,
-  Stuff in 'Stuff.pas' {FGraphics},
+  TablesAndGraphics in 'TablesAndGraphics.pas' {FGraphics},
   Unit1 in 'Unit1.pas' {Main},
   Unit2 in 'Unit2.pas' {FRegistration};
 

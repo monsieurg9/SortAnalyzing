@@ -1,4 +1,4 @@
-unit Unit1;
+unit Menu;
 
 interface
 
@@ -22,7 +22,7 @@ var
 
 implementation
 
-uses stuff;
+uses TablesAndGraphics, Entrance;
 
 {$R *.dfm}
 

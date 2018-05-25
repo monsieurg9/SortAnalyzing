@@ -1,8 +1,8 @@
-object Form2: TForm2
-  Left = 288
-  Top = 285
-  Width = 928
-  Height = 480
+object FRegistration: TFRegistration
+  Left = 204
+  Top = 179
+  Width = 236
+  Height = 313
   Caption = #1056#1077#1075#1080#1089#1090#1072#1094#1080#1103
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,8 +14,8 @@ object Form2: TForm2
   PixelsPerInch = 96
   TextHeight = 13
   object lbledtName: TLabeledEdit
-    Left = 136
-    Top = 64
+    Left = 40
+    Top = 48
     Width = 153
     Height = 21
     EditLabel.Width = 53
@@ -24,8 +24,8 @@ object Form2: TForm2
     TabOrder = 0
   end
   object lbledtSurname: TLabeledEdit
-    Left = 136
-    Top = 112
+    Left = 40
+    Top = 96
     Width = 153
     Height = 21
     EditLabel.Width = 67
@@ -34,8 +34,8 @@ object Form2: TForm2
     TabOrder = 1
   end
   object lbledtPassword: TLabeledEdit
-    Left = 136
-    Top = 160
+    Left = 40
+    Top = 144
     Width = 153
     Height = 21
     EditLabel.Width = 71

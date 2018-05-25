@@ -1,16 +1,13 @@
-unit Unit2;
+unit AdminForm;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls;
+  Dialogs;
 
 type
-  TForm2 = class(TForm)
-    lbledtName: TLabeledEdit;
-    lbledtSurname: TLabeledEdit;
-    lbledtPassword: TLabeledEdit;
+  TAdminForm = class(TForm)
   private
     { Private declarations }
   public
@@ -18,7 +15,7 @@ type
   end;
 
 var
-  Form2: TForm2;
+  AdminForm: TAdminForm;
 
 implementation
 

@@ -1,6 +1,6 @@
-object Graphics: TGraphics
-  Left = 369
-  Top = 171
+object FGraphics: TFGraphics
+  Left = 313
+  Top = 270
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1043#1088#1072#1092#1080#1082#1080

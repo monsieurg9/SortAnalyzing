@@ -1,4 +1,4 @@
-unit Stuff;
+unit TablesAndGraphics;
 
 interface
 
@@ -21,7 +21,7 @@ type
   TMas  = array [1..MaxMassSize] of cardinal;
   TCriteria = (Random=1, Sorted, Inverted);
 
-  TGraphics = class(TForm)
+  TFGraphics = class(TForm)
     chtGraphicBoxBubble: TChart;
     lnsrsSeries1: TLineSeries;
     TeeFunction1: TMultiplyTeeFunction;
@@ -65,7 +65,7 @@ type
 
 
 var
-  FGraphics: TGraphics;
+  FGraphics: TFGraphics;
   FHeapTime,FBubbleTime,FHeapTransp,FBubbleTransp,FCompHeap,FCompBubble : text;
   size : array [1..NSize] of integer = (100, 250, 500, 1000, 2000, 3000, 5000, 10000, 20000, 50000, 60000, 70000);
   FBubble, FHeap : text;
@@ -90,7 +90,7 @@ uses Unit1;
 
 {$R *.dfm}
 
-procedure TGraphics.SetScale;
+procedure TFGraphics.SetScale;
 begin
   with chtGraphicBoxBubble do
   begin
@@ -122,22 +122,22 @@ begin
   end;
 end;
 
-procedure TGraphics.rbSortedClick(Sender: TObject);
+procedure TFGraphics.rbSortedClick(Sender: TObject);
 begin
   Criteria := Sorted;
 end;
 
-procedure TGraphics.rbInvertedClick(Sender: TObject);
+procedure TFGraphics.rbInvertedClick(Sender: TObject);
 begin
   Criteria := Inverted;
 end;
 
-procedure TGraphics.rbRandomClick(Sender: TObject);
+procedure TFGraphics.rbRandomClick(Sender: TObject);
 begin
   Criteria := Random;
 end;
 
-function TGraphics.GetMax(Const FFile: text): cardinal;
+function TFGraphics.GetMax(Const FFile: text): cardinal;
 var
   a : ResultMas;
   i, j : cardinal;
@@ -166,7 +166,7 @@ begin
   end;
 end;
 
-function TGraphics.GetMaxRow(const FFile: text; Row: TCriteria): cardinal;
+function TFGraphics.GetMaxRow(const FFile: text; Row: TCriteria): cardinal;
 var
   a : ResultMas;
   i, j : cardinal;
@@ -187,25 +187,25 @@ begin
   end;
 end;
 
-procedure TGraphics.rbTimeClick(Sender: TObject);
+procedure TFGraphics.rbTimeClick(Sender: TObject);
 begin
   CurrentFile[1] := FileNames[1,1];
   CurrentFile[2] := FileNames[1,2];
 end;
 
-procedure TGraphics.rbCompClick(Sender: TObject);
+procedure TFGraphics.rbCompClick(Sender: TObject);
 begin
   CurrentFile[1] := FileNames[2,1];
   CurrentFile[2] := FileNames[2,2];
 end;
 
-procedure TGraphics.rbTranspClick(Sender: TObject);
+procedure TFGraphics.rbTranspClick(Sender: TObject);
 begin
   CurrentFile[1] := FileNames[3,1];
   CurrentFile[2] := FileNames[3,2];
 end;
 
-procedure TGraphics.btnDrawGraphicClick(Sender: TObject);
+procedure TFGraphics.btnDrawGraphicClick(Sender: TObject);
 var
   i, x, y : cardinal;
 begin
@@ -270,7 +270,7 @@ begin
   closefile(FHeap);
 end;
 
-procedure TGraphics.btnFillTableClick(Sender: TObject);
+procedure TFGraphics.btnFillTableClick(Sender: TObject);
 var
   i, j: cardinal;
   buf : cardinal;
@@ -291,12 +291,12 @@ begin
     end;
   end;
 end;
-procedure TGraphics.btnBackClick(Sender: TObject);
+procedure TFGraphics.btnBackClick(Sender: TObject);
 begin
   FGraphics.close;
 end;
 
-procedure TGraphics.Initialize;
+procedure TFGraphics.Initialize;
 var
   i : cardinal;
 begin
@@ -316,7 +316,7 @@ begin
   end;
 end;
 
-procedure TGraphics.btnTableClick(Sender: TObject);
+procedure TFGraphics.btnTableClick(Sender: TObject);
 begin
   if btnDrawGraphic.Visible then
     btnDrawGraphic.Visible := False
