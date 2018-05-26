@@ -1,13 +1,19 @@
-unit AdminForm;
+unit AdmonForm;
 
 interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs;
+  Dialogs, ComCtrls, StdCtrls, ExtCtrls;
 
 type
   TAdminForm = class(TForm)
+    lvUsers: TListView;
+    pnlEditListButtons: TPanel;
+    btnAddUser: TButton;
+    lblUsers: TLabel;
+    procedure FillListView;
+    procedure btnAddUserClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -19,6 +25,41 @@ var
 
 implementation
 
+uses UserRegistratin, Entrance;
+
 {$R *.dfm}
+
+{ TAdminForm }
+
+procedure TAdminForm.FillListView;
+var
+  item : TListItem;
+  i : cardinal;
+begin
+  reset(users);
+  lvUsers.Clear;
+  i := 0;
+  while not(EoF(Users)) do
+  begin
+    Item := TListItem.Create(lvUsers.Items);
+    read(Users, bufUser);
+    Item.Caption := IntToStr(i+1);
+    item.SubItems.add(bufUser.UserName);
+    item.SubItems.Add(bufUser.Password);
+    item.SubItems.Add(bufUser.Name);
+    item.SubItems.Add(bufUser.SurName);
+    lvUsers.Items.Insert(i);
+    lvUsers.Items.Item[i] := item;
+    item.Free;
+    inc(i);
+  end;
+  closeFile(users);
+end;
+
+procedure TAdminForm.btnAddUserClick(Sender: TObject);
+begin
+  Registration.ShowModal;
+  AdminForm.FillListView;
+end;
 
 end.

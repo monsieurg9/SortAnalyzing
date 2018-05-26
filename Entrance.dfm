@@ -33,6 +33,7 @@ object FEntrance: TFEntrance
     EditLabel.Width = 38
     EditLabel.Height = 13
     EditLabel.Caption = #1055#1072#1088#1086#1083#1100
+    PasswordChar = '*'
     TabOrder = 1
   end
   object btnEnter: TButton
@@ -62,13 +63,13 @@ object FEntrance: TFEntrance
     TabOrder = 4
     OnClick = btnAdminClick
   end
-  object btnCheats: TButton
-    Left = 136
-    Top = 8
-    Width = 73
-    Height = 25
-    Caption = 'btnCheats'
+  object chkShowPassword: TCheckBox
+    Left = 40
+    Top = 176
+    Width = 153
+    Height = 17
+    Caption = #1055#1086#1082#1072#1079#1072#1090#1100' '#1087#1072#1088#1086#1083#1100
     TabOrder = 5
-    OnClick = btnCheatsClick
+    OnClick = chkShowPasswordClick
   end
 end

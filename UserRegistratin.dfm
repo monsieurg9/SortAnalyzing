@@ -1,6 +1,6 @@
 object Registration: TRegistration
-  Left = 431
-  Top = 289
+  Left = 643
+  Top = 281
   Width = 498
   Height = 311
   Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103
@@ -78,7 +78,7 @@ object Registration: TRegistration
     Width = 209
     Height = 49
     Caption = #1054#1090#1084#1077#1085#1072
+    ModalResult = 2
     TabOrder = 6
-    OnClick = btnCancelClick
   end
 end

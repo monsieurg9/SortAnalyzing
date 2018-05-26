@@ -9,8 +9,9 @@ uses
 type
   TMain = class(TForm)
     btnGraphics: TButton;
-    btnRegistration: TButton;
+    btnChangeUser: TButton;
     procedure btnGraphicsClick(Sender: TObject);
+    procedure btnChangeUserClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,6 +30,11 @@ uses TablesAndGraphics, Entrance;
 procedure TMain.btnGraphicsClick(Sender: TObject);
 begin
   FGraphics.ShowModal;
+end;
+
+procedure TMain.btnChangeUserClick(Sender: TObject);
+begin
+  main.Close;
 end;
 
 end.

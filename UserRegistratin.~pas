@@ -74,6 +74,7 @@ begin
       read(Users, bufUser);
       addUser(poinUser, bufUser);
     end;
+    closeFile(users);
   end;
 
 
@@ -81,23 +82,27 @@ end;
 
 procedure TRegistration.btnConfirmClick(Sender: TObject);
 begin
+  if lbledtPassword.Text = lbledtConfirmPassword.Text then
+  begin
+    bufUser.UserName := lbledtUserName.Text;
+    bufUser.Password := lbledtPassword.Text;
+    bufUser.ConfirmPassword := lbledtConfirmPassword.Text;
+    bufUser.Name := lbledtName.Text;
+    bufUser.SurName := lbledtSurName.Text;
+    addUser(PoinUser, bufUser);
+                                     
+    assignFile(users, 'C:\”нивер\ќјиѕ\SortAnalyzing\Users.dat');
+    reset(Users);
+    Seek(users, filesize(users));
 
-  bufUser.UserName := lbledtUserName.Text;
-  bufUser.Password := lbledtPassword.Text;
-  bufUser.ConfirmPassword := lbledtConfirmPassword.Text;
-  bufUser.Name := lbledtName.Text;
-  bufUser.SurName := lbledtSurName.Text;
-  addUser(PoinUser, bufUser);
+    write(Users, bufUser);
+    closeFile(Users);
 
-  assignFile(users, 'C:\”нивер\ќјиѕ\SortAnalyzing\Users.dat');
-  reset(Users);
-  Seek(users, filesize(users));
-
-  write(Users, bufUser);
-  closeFile(Users);
-
-  ClearEdits;
-  Registration.close;
+    ClearEdits;
+    Registration.close;
+  end
+  else
+    ShowMessage('ѕароли несовпадают'+#13#10+'ѕожалуйста, повторите попытку');
 end;
 
 procedure TRegistration.ClearEdits;

@@ -30,7 +30,7 @@ type
     procedure Initialize;
     procedure btnConfirmClick(Sender: TObject);
     procedure ClearEdits;
-    procedure btnCancelClick(Sender: TObject);
+//    procedure btnCancelClick(Sender: TObject);
     procedure addUser(Var CurrPoin : poin; NewUser : User);
   private
     { Private declarations }
@@ -82,23 +82,27 @@ end;
 
 procedure TRegistration.btnConfirmClick(Sender: TObject);
 begin
+  if lbledtPassword.Text = lbledtConfirmPassword.Text then
+  begin
+    bufUser.UserName := lbledtUserName.Text;
+    bufUser.Password := lbledtPassword.Text;
+    bufUser.ConfirmPassword := lbledtConfirmPassword.Text;
+    bufUser.Name := lbledtName.Text;
+    bufUser.SurName := lbledtSurName.Text;
+    addUser(PoinUser, bufUser);
 
-  bufUser.UserName := lbledtUserName.Text;
-  bufUser.Password := lbledtPassword.Text;
-  bufUser.ConfirmPassword := lbledtConfirmPassword.Text;
-  bufUser.Name := lbledtName.Text;
-  bufUser.SurName := lbledtSurName.Text;
-  addUser(PoinUser, bufUser);
+    assignFile(users, 'C:\”нивер\ќјиѕ\SortAnalyzing\Users.dat');
+    reset(Users);
+    Seek(users, filesize(users));
 
-  assignFile(users, 'C:\”нивер\ќјиѕ\SortAnalyzing\Users.dat');
-  reset(Users);
-  Seek(users, filesize(users));
+    write(Users, bufUser);
+    closeFile(Users);
 
-  write(Users, bufUser);
-  closeFile(Users);
-
-  ClearEdits;
-  Registration.close;
+    ClearEdits;
+    Registration.close;
+  end
+  else
+    ShowMessage('ѕароли несовпадают'+#13#10+'ѕожалуйста, повторите попытку');
 end;
 
 procedure TRegistration.ClearEdits;
@@ -109,13 +113,13 @@ begin
   lbledtName.Text := '';
   lbledtSurName.Text := '';
 end;
-
+ {
 procedure TRegistration.btnCancelClick(Sender: TObject);
 begin
   ClearEdits;
-  Registration.Close;
+  registration.close;
 end;
-
+  }
 procedure TRegistration.addUser(Var CurrPoin : poin; NewUser : User);
 var
   bufPoin : poin;

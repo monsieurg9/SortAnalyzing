@@ -1,6 +1,6 @@
 object Main: TMain
-  Left = 194
-  Top = 274
+  Left = 112
+  Top = 146
   Width = 928
   Height = 480
   Caption = #1040#1085#1072#1083#1080#1079' '#1089#1086#1088#1090#1080#1088#1086#1074#1086#1082
@@ -22,12 +22,13 @@ object Main: TMain
     TabOrder = 0
     OnClick = btnGraphicsClick
   end
-  object btnRegistration: TButton
+  object btnChangeUser: TButton
     Left = 344
     Top = 240
     Width = 169
     Height = 57
-    Caption = 'btnRegistration'
+    Caption = #1057#1084#1077#1085#1080#1090#1100' '#1087#1086#1083#1100#1079#1086#1074#1072#1090#1077#1083#1103
     TabOrder = 1
+    OnClick = btnChangeUserClick
   end
 end
