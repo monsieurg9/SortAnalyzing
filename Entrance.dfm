@@ -1,6 +1,6 @@
 object FEntrance: TFEntrance
-  Left = 585
-  Top = 274
+  Left = 553
+  Top = 256
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103

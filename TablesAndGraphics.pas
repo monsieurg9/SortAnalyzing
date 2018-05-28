@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, TeEngine, Series, ExtCtrls, TeeProcs, Chart, TeeFunci, StdCtrls,
-  jpeg, ComCtrls, Grids, Buttons;
+  jpeg, ComCtrls, Grids, Buttons, Menus;
 
 const
   NSize = 12;
@@ -43,6 +43,8 @@ type
     txtHeap: TStaticText;
     txtBubble: TStaticText;
     btnBack: TBitBtn;
+    mmInformation: TMainMenu;
+    N1: TMenuItem;
     procedure rbInvertedClick(Sender: TObject);
     procedure rbRandomClick(Sender: TObject);
     procedure SetScale;

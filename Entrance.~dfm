@@ -1,10 +1,10 @@
 object FEntrance: TFEntrance
   Left = 585
-  Top = 253
+  Top = 274
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = #1040#1074#1090#1086#1088#1080#1079#1072#1094#1080#1103
-  ClientHeight = 286
+  ClientHeight = 207
   ClientWidth = 220
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,8 +16,8 @@ object FEntrance: TFEntrance
   PixelsPerInch = 96
   TextHeight = 13
   object lbledtName: TLabeledEdit
-    Left = 40
-    Top = 88
+    Left = 32
+    Top = 40
     Width = 153
     Height = 21
     EditLabel.Width = 31
@@ -26,8 +26,8 @@ object FEntrance: TFEntrance
     TabOrder = 0
   end
   object lbledtPassword: TLabeledEdit
-    Left = 40
-    Top = 136
+    Left = 32
+    Top = 80
     Width = 153
     Height = 21
     EditLabel.Width = 38
@@ -38,7 +38,7 @@ object FEntrance: TFEntrance
   end
   object btnEnter: TButton
     Left = 16
-    Top = 216
+    Top = 136
     Width = 89
     Height = 25
     Caption = #1042#1086#1081#1090#1080
@@ -47,7 +47,7 @@ object FEntrance: TFEntrance
   end
   object btnRegistration: TButton
     Left = 120
-    Top = 216
+    Top = 136
     Width = 89
     Height = 25
     Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103
@@ -56,7 +56,7 @@ object FEntrance: TFEntrance
   end
   object btnAdmin: TButton
     Left = 16
-    Top = 248
+    Top = 168
     Width = 193
     Height = 25
     Caption = #1042#1086#1081#1090#1080' '#1082#1072#1082' '#1072#1076#1084#1080#1085#1080#1089#1090#1088#1072#1090#1086#1088
@@ -64,8 +64,8 @@ object FEntrance: TFEntrance
     OnClick = btnAdminClick
   end
   object chkShowPassword: TCheckBox
-    Left = 40
-    Top = 176
+    Left = 32
+    Top = 104
     Width = 153
     Height = 17
     Caption = #1055#1086#1082#1072#1079#1072#1090#1100' '#1087#1072#1088#1086#1083#1100

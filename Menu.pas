@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, ComCtrls, StdCtrls;
+  Dialogs, Grids, ComCtrls, StdCtrls, Menus;
 
 type
   TMain = class(TForm)
@@ -12,13 +12,20 @@ type
     btnChangeUser: TButton;
     btnExit: TButton;
     btnInfo: TButton;
+    mmMenu: TMainMenu;
+    N1: TMenuItem;
     procedure btnGraphicsClick(Sender: TObject);
     procedure btnChangeUserClick(Sender: TObject);
     procedure btnExitClick(Sender: TObject);
     procedure SaveData;
+    procedure N1Click(Sender: TObject);
+    procedure btnInfoClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
+    changeUser : boolean;
     { Public declarations }
   end;
 
@@ -27,7 +34,7 @@ var
 
 implementation
 
-uses TablesAndGraphics, Entrance, UserRegistratin;
+uses TablesAndGraphics, Entrance, UserRegistratin, SortInformation;
 
 {$R *.dfm}
 
@@ -38,7 +45,8 @@ end;
 
 procedure TMain.btnChangeUserClick(Sender: TObject);
 begin
-  main.Close;
+  ChangeUser := true;
+  main.close;
 end;
 
 procedure TMain.btnExitClick(Sender: TObject);
@@ -67,6 +75,36 @@ begin
     Write(Users, BufUser);
     poinUser := PoinUser.PoinNext;
   end;
+end;
+
+procedure TMain.N1Click(Sender: TObject);
+begin
+  ShowMessage('ָה');
+end;
+
+procedure TMain.btnInfoClick(Sender: TObject);
+begin
+  Information.ShowModal;
+end;
+
+procedure TMain.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if changeUser then
+  begin
+    Main.Close;
+    ChangeUser := false;
+  end
+  else
+  begin
+    Main.Close;
+    SaveData;
+    FEntrance.Close;
+  end;
+end;
+
+procedure TMain.FormCreate(Sender: TObject);
+begin
+  changeUser := false;
 end;
 
 end.

@@ -12,18 +12,18 @@ type
     btnNo: TButton;
     lblMessage: TLabel;
     lblMessage2: TLabel;
-    procedure FormCreate(Sender: TObject);
     procedure btnYesClick(Sender: TObject);
     procedure btnNoClick(Sender: TObject);
   private
     { Private declarations }
   public
+    Flag : Boolean;
     { Public declarations }
   end;
 
 var
   Dialog: TDialog;
-  Flag : Boolean;
+
 
 implementation
 
@@ -31,17 +31,19 @@ implementation
 
 procedure FormCreate(Sender: TObject);
 begin
-  Flag := False;
+  Dialog.Flag := False;
 end;
 
 procedure TDialog.btnYesClick(Sender: TObject);
 begin
-  Flag := True;
+  Dialog.Flag := True;
+  dialog.Close;
 end;
 
 procedure TDialog.btnNoClick(Sender: TObject);
 begin
-  Flag := False;
+  Dialog.Flag := False;
+  dialog.Close;
 end;
 
 end.

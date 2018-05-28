@@ -45,6 +45,8 @@ type
     function  checkWorkPlace : boolean;
     function  checkPassword : boolean;
     function  checkAge : boolean;
+    procedure lbledtAgeKeyPress(Sender: TObject; var Key: Char);
+    procedure btnCancelClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -249,6 +251,7 @@ begin
       Result := False;
     end;
   end;
+  if lbledtUserName.Text = '' then result := false;
 end;
 
 function TRegistration.checkNameAndSurname: boolean;
@@ -272,6 +275,8 @@ begin
       Result := False;
     end;
   end;
+  if lbledtSurName.Text = '' then result := false;
+  if lbledtName.Text = '' then result := false;
 end;
 
 function TRegistration.checkWorkPlace: boolean;
@@ -290,6 +295,7 @@ begin
       Result := False;
     end;
   end;
+  if lbledtWorkplace.Text = '' then result := false;
 end;
 
 function TRegistration.checkPassword: boolean;
@@ -305,13 +311,24 @@ var
   i : cardinal;
 begin
   result := true;
-  for i := 1 to length(lbledtWorkplace.Text) do
+  if (StrToInt(lbledtAge.Text) < 1) or (StrToInt(lbledtAge.Text) > 130) then
   begin
-    if not((lbledtAge.Text[i] in digits)) then
-    begin
-      Result := False;
-    end
+    result := false;
   end;
+end;
+
+procedure TRegistration.lbledtAgeKeyPress(Sender: TObject; var Key: Char);
+begin
+  if not(key in digits) then
+  begin
+    key := #0;
+  end;
+end;
+
+procedure TRegistration.btnCancelClick(Sender: TObject);
+begin
+  btnEditUser.Visible := False;
+  btnConfirm.Visible := True;
 end;
 
 end.

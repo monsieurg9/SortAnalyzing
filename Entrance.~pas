@@ -14,7 +14,6 @@ type
     btnRegistration: TButton;
     btnAdmin: TButton;
     chkShowPassword: TCheckBox;
-    procedure btnCheatsClick(Sender: TObject);
     procedure btnRegistrationClick(Sender: TObject);
     procedure btnEnterClick(Sender: TObject);
     procedure btnAdminClick(Sender: TObject);
@@ -33,11 +32,6 @@ implementation
 Uses Menu, UserRegistratin, AdmonForm;
 
 {$R *.dfm}
-
-procedure TFEntrance.btnCheatsClick(Sender: TObject);
-begin
-  Main.ShowModal;     
-end;
 
 procedure TFEntrance.btnRegistrationClick(Sender: TObject);
 begin

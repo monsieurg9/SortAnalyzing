@@ -21,6 +21,7 @@ type
   private
     { Private declarations }
   public
+    ChangeUser : Boolean;
     { Public declarations }
   end;
 

@@ -1,6 +1,6 @@
 object Registration: TRegistration
-  Left = 494
-  Top = 279
+  Left = 490
+  Top = 240
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #1056#1077#1075#1080#1089#1090#1088#1072#1094#1080#1103
@@ -19,7 +19,7 @@ object Registration: TRegistration
     Left = 30
     Top = 50
     Width = 130
-    Height = 20
+    Height = 21
     EditLabel.Width = 31
     EditLabel.Height = 13
     EditLabel.Caption = #1051#1086#1075#1080#1085
@@ -29,7 +29,7 @@ object Registration: TRegistration
     Left = 30
     Top = 90
     Width = 130
-    Height = 20
+    Height = 21
     EditLabel.Width = 38
     EditLabel.Height = 13
     EditLabel.Caption = #1055#1072#1088#1086#1083#1100
@@ -39,7 +39,7 @@ object Registration: TRegistration
     Left = 30
     Top = 132
     Width = 130
-    Height = 20
+    Height = 21
     EditLabel.Width = 105
     EditLabel.Height = 13
     EditLabel.Caption = #1055#1086#1076#1090#1074#1077#1088#1076#1080#1090#1077' '#1087#1072#1088#1086#1083#1100
@@ -49,7 +49,7 @@ object Registration: TRegistration
     Left = 200
     Top = 30
     Width = 130
-    Height = 20
+    Height = 21
     EditLabel.Width = 22
     EditLabel.Height = 13
     EditLabel.Caption = #1048#1084#1103
@@ -74,7 +74,7 @@ object Registration: TRegistration
     Left = 200
     Top = 70
     Width = 130
-    Height = 20
+    Height = 21
     EditLabel.Width = 49
     EditLabel.Height = 13
     EditLabel.Caption = #1060#1072#1084#1080#1083#1080#1103
@@ -94,6 +94,7 @@ object Registration: TRegistration
     ModalResult = 2
     ParentFont = False
     TabOrder = 6
+    OnClick = btnCancelClick
   end
   object btnEditUser: TButton
     Left = 20
@@ -116,17 +117,18 @@ object Registration: TRegistration
     Left = 200
     Top = 110
     Width = 130
-    Height = 20
+    Height = 21
     EditLabel.Width = 42
     EditLabel.Height = 13
     EditLabel.Caption = #1042#1086#1079#1088#1072#1089#1090
     TabOrder = 8
+    OnKeyPress = lbledtAgeKeyPress
   end
   object lbledtWorkPlace: TLabeledEdit
     Left = 200
     Top = 150
     Width = 130
-    Height = 20
+    Height = 21
     EditLabel.Width = 72
     EditLabel.Height = 13
     EditLabel.Caption = #1052#1077#1089#1090#1086' '#1088#1072#1073#1086#1090#1099

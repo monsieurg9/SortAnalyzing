@@ -321,7 +321,7 @@ begin
   Dialog.ShowModal;
   if Dialog.Flag then
   begin
-    ShowMessage('Ожидайте');
+    ShowMessage('Нажмите ОК и ожидайте');
     // Связывание файловых переменных с файлами
     assignFile(Files[1], 'FRandomMass.dat');
     assignFile(Files[2], 'FSortedMass.dat');

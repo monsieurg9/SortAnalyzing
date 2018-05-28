@@ -7,7 +7,8 @@ uses
   Entrance in 'Entrance.pas' {FEntrance},
   UserRegistratin in 'UserRegistratin.pas' {Registration},
   AdmonForm in 'AdmonForm.pas' {AdminForm},
-  DialogForm in 'DialogForm.pas' {Dialog};
+  DialogForm in 'DialogForm.pas' {Dialog},
+  SortInformation in 'SortInformation.pas' {Information};
 
 {$R *.res}
 
@@ -19,6 +20,7 @@ begin
   Application.CreateForm(TRegistration, Registration);
   Application.CreateForm(TAdminForm, AdminForm);
   Application.CreateForm(TDialog, Dialog);
+  Application.CreateForm(TInformation, Information);
   Registration.Initialize;
   FGraphics.SetScale;
   FGraphics.Initialize;
