@@ -1,0 +1,47 @@
+unit DialogForm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TDialog = class(TForm)
+    btnYes: TButton;
+    btnNo: TButton;
+    lblMessage: TLabel;
+    lblMessage2: TLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure btnYesClick(Sender: TObject);
+    procedure btnNoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Dialog: TDialog;
+  Flag : Boolean;
+
+implementation
+
+{$R *.dfm}
+
+procedure FormCreate(Sender: TObject);
+begin
+  Flag := False;
+end;
+
+procedure TDialog.btnYesClick(Sender: TObject);
+begin
+  Flag := True;
+end;
+
+procedure TDialog.btnNoClick(Sender: TObject);
+begin
+  Flag := False;
+end;
+
+end.

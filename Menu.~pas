@@ -10,8 +10,10 @@ type
   TMain = class(TForm)
     btnGraphics: TButton;
     btnChangeUser: TButton;
+    btnExit: TButton;
     procedure btnGraphicsClick(Sender: TObject);
     procedure btnChangeUserClick(Sender: TObject);
+    procedure btnExitClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -23,7 +25,7 @@ var
 
 implementation
 
-uses TablesAndGraphics, Entrance;
+uses TablesAndGraphics, Entrance, UserRegistratin;
 
 {$R *.dfm}
 
@@ -35,6 +37,24 @@ end;
 procedure TMain.btnChangeUserClick(Sender: TObject);
 begin
   main.Close;
+end;
+
+procedure TMain.btnExitClick(Sender: TObject);
+var
+  bufUser : User;
+begin
+  assignFile(Users, 'C:\”ÌË‚Â\Œ¿Ëœ\SortAnalyzing\Users.dat');
+  rewrite(Users);
+  poinUser := poinHead^.poinNext;
+  while poinUser <> nil do
+  begin
+    BufUser.UserName := poinUser^.UserName;
+    BufUser.Password := poinUser^.Password;
+    BufUser.ConfirmPassword := poinUser^.ConfirmPassword;
+    BufUser.Name := poinUser^.Name;
+    BufUser.SurName := poinUser^.SurName;
+    Write(Users, BufUser);
+  end;
 end;
 
 end.

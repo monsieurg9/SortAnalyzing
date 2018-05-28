@@ -11,9 +11,9 @@ const
   NSize = 12;
   MaxMassSize = 70000;
   MaxRandomValue = 5000;
-  FileNames : array [1..3,1..2] of string = (('FBubbleTime.txt','FHeapTime.txt'),
-                                             ('FCompBubble.txt','FCompHeap.txt'),
-                                             ('FBubbleTransp.txt','FHeapTransp.txt'));
+  FileNames : array [1..3,1..2] of string = (('FBubbleTime.dat','FHeapTime.dat'),
+                                             ('FCompBubble.dat','FCompHeap.dat'),
+                                             ('FBubbleTransp.dat','FHeapTransp.dat'));
   GridHead : array [0..3] of string = ('Размерность','Случайный','Отсортированный','Перевернутый');
 type
   ResultMas = array [1..3, 1..NSize] of cardinal;
@@ -74,16 +74,7 @@ var
   MaxValue : cardinal = 100;
   CurrentFile : array [1..2] of String;
   Criteria : TCriteria;
-  {
-  ResultTimeBubble : ResultMas;
-  ResultTimeHeap   : ResultMas;
 
-  ResultTranspBubble : ResultMas;
-  ResultTranspHeap   : ResultMas;
-
-  ResultCompBubble : ResultMas;
-  ResultCompHeap   : ResultMas;
-  }
 implementation
 
 uses Menu;
