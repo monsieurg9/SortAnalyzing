@@ -1,0 +1,25 @@
+unit SortInformation;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TInformation = class(TForm)
+    mmoHeapSort: TMemo;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Information: TInformation;
+
+implementation
+
+{$R *.dfm}
+
+end.
